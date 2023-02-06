@@ -75,28 +75,97 @@ for($i = 0; $price_year < 150; $i++) {
         echo "Через $i года: " .$price_year . "руб . <br/>";
     }
 }
-//arraylist
 
-$fruits = array("яблоко", "груша", "слива", "абрикос", "вишня");
+//arraylist
+// 5 задание доделать
+/*$fruits = array("яблоко", "груша", "слива", "абрикос", "вишня");
 $fruits[5] = "черешня";
 $fruits[6] = "виноград";
 for ($i=0; $i<= count($fruits);$i++){
     echo $fruits[$i];
 }
-echo count($fruits );
-echo sort($fruits);
+*/
+//echo count($fruits. " ");
+//echo sort($fruits);
 
 // Задание 6
-$product['Чайник'] = "350";
-$product['Кипятильник'] = "300";
-$product['Чашка'] = "120";
-$product_1 = array("Самовар"=>"550", "Тарелка"=>"100");
+$product["Чайник"] = "350";
+$product["Кипятильник"] = "300";
+$product["Чашка"] = "120";
+$product_2 = array("Самовар"=>"550", "Тарелка"=>"100");
 
-foreach ($product as $product_1) {
-    for ($i=0; $i<= count($product);$i++){
-        echo $product[$i];
+//разобраться почему вывод протянка
+// используем в foreach ключ для вывода названия
+foreach ($product as $i => $value) {
+    echo $i . " = ". $value. "<br /> ";
+    sort($product);
 }
+// sort
+// Создадим ф-цию для подсчета суммарной стоимости
+$product_3 = 0;
+foreach ($product as $count) {
+    $product_3 += $count;
+ }
+echo "Cуммарная стоимость товаров:" . $product_3 . "<br />";
+// как подсчитать товары?
+// через ф-цию  array_filter, которая реализует подсчет кол-ва значений в массиве
+$filled_array=array_filter($product);// will return only filled values
+$count=count($filled_array);
+echo "Кол-во товаров: " . $count. "<br />";// returns array count
+
+// ф-ции asort()возрастания and arsort()уменьшения
+
+asort($product);
+foreach ($product as $key => $value) {
+    echo "Сортировка массивов по возрастанию:"."$key = $value \n" . "<br />";
+}
+arsort($product);
+foreach ($product as $key => $value) {
+    echo "Убывание массива:" . "$key = $value \n" . "<br />";
+}
+// отсортироать по ключу
+ksort($product);
+foreach ($product as $key => $val) {
+    echo "Сортировка по ключу: " ."$key = $val\n" . "<br />";
+}
+krsort($product);
+foreach ($product as $key => $val) {
+    echo "Сортировка по ключу по убыванию: " ."$key = $val\n" . "<br />";
 }
 
+// Задание 7
 
+echo <<< HTML
+<h1>  Информация о разработчике </h1>
+<h3>ФИО: Шалгинская Божена Игоревна</h3>
+<h3>Возраст: 19 лет</h3>
+<h3>Навыки: HTML вёрстка, веб-дизайн, JS, CSS, PHP</h3>
+HTML;
+
+// Задание 8
+// Таблица цветов, как рееализовать через ф-ции?
+echo '<table border=1>';
+for ($i=0; $i<=255; $i += 50)
+{
+    echo '<tr>';
+
+    for ($j=0; $j<=255; $j += 50)
+    {
+        for ($k=0; $k<=255; $k += 50)
+        {
+            echo '<td style="background-color:RGB('.$i.', '.$j.', '.$k.');"> rgb('.$i.', '.$j.', '.$k.')</td>';
+        }
+    }
+
+    echo '</tr>';
+}
+echo'</table>';
+
+// Задание 9
+$n = 100;
+$min = 0;
+$max = 100;
+while(($number = rand($min, $max)) >= $n){echo "Генерация случайных чисел: ". $number;}
+
+echo rand(1, 100);
 
